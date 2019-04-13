@@ -1,0 +1,2 @@
+class DATA:
+    MESSAGES_SINCE_START = 0
