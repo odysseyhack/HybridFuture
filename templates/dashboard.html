@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>jQuery Hello World</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    <style type="text/css">
+        .info {
+            font-family: 'Roboto', sans-serif;
+            position: fixed; /* or absolute */
+            top: 40%;
+            left: 50%;
+            font-size: 40px;
+            /* bring your own prefixes */
+            transform: translate(-50%, -50%);
+        }
+
+        body {
+            background-color: #f3f6fd;
+        }
+    </style>
 </head>
+
 <body>
-$END$
+
+<script type="text/javascript">
+    function getData() {
+        $.get('dashboard/data', function (data) {
+            $('#text').text(data["messages"]);
+            setTimeout(getData, 2000);
+        });
+    }
+
+    $(document).ready(getData());
+</script>
+
+<div class="info" id="info">
+    <p style="display:inline">
+        Total of messages received:</p>
+    <b>
+        <p class="text" id="text" style="display:inline">
+            {{ data }}
+        </p>
+    </b>
+</div>
+
 </body>
 </html>
